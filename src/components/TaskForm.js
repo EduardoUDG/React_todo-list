@@ -3,7 +3,7 @@ import { v4 as uuidv4 }    from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare }    from '@fortawesome/free-solid-svg-icons'
 
-const TaskForm = ({ tasks, updateTasks}) => {
+const TaskForm = ({ tasks=[], updateTasks}) => {
     const [ taskInput, updateTaskInput] = useState('');
 
     const handleInput = e => {
