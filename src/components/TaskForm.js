@@ -21,6 +21,7 @@ const TaskForm = ({ tasks=[], updateTasks}) => {
             completed: false
             }
         ]);
+        updateTaskInput('');
     }
 
     return (
