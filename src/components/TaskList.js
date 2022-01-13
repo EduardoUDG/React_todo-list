@@ -2,7 +2,7 @@ import React from 'react';
 import Task from './Task';
 
 
-const TaskList = ({ tasks=[], updateTasks }) => {
+const TaskList = ({ tasks=[], updateTasks, showTaskCompleted }) => {
 
     const toggleCompleted = ( id ) => {
         updateTasks( tasks.map( task => {
@@ -28,13 +28,26 @@ const TaskList = ({ tasks=[], updateTasks }) => {
         <ul className='lista-tareas'>
             { (tasks.length > 0 ) 
                 ? tasks.map( task => {
-                    return <Task 
-                                key={task.id}
-                                task={task}
-                                toggleCompleted={toggleCompleted}
-                                editTask={editTask}
-                                deleteTask={deleteTask}
-                            />
+                    if( showTaskCompleted ) {
+                        return <Task 
+                                    key={task.id}
+                                    task={task}
+                                    toggleCompleted={toggleCompleted}
+                                    editTask={editTask}
+                                    deleteTask={deleteTask}
+                                />
+                    // Si la tarea no está completada, la devolvemos
+                    } else if ( !task.completed ) {
+                        return <Task 
+                                    key={task.id}
+                                    task={task}
+                                    toggleCompleted={toggleCompleted}
+                                    editTask={editTask}
+                                    deleteTask={deleteTask}
+                                />
+
+                    }
+                    return false;
                 })
                 : <div className='lista-tareas__mensaje'>No hay tareas agregadas</div>
             }

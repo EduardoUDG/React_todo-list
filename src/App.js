@@ -19,11 +19,20 @@ const App = () => {
     }
   ]);
 
+  const [showTaskCompleted, updateShowTaskCompleted] = useState(false);
+
   return (
     <div className='contenedor'>
-      <Header/>
+      <Header 
+        updateShowTaskCompleted={updateShowTaskCompleted}
+        showTaskCompleted={showTaskCompleted}
+        />
       <TaskForm tasks={tasks} updateTasks={updateTasks} />
-      <TaskList tasks={tasks} updateTasks={updateTasks}/>
+      <TaskList 
+        tasks={tasks} 
+        updateTasks={updateTasks}
+        showTaskCompleted={showTaskCompleted}
+      />
     </div>
   );
 }
